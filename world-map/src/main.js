@@ -78,6 +78,17 @@ function centroid(feature) {
   };
 }
 
+function latLngToVector(lat, lng) {
+  const lngRad = (lng * Math.PI) / 180;
+  const latRad = (lat * Math.PI) / 180;
+
+  return {
+    x: Math.cos(latRad) * Math.cos(lngRad),
+    y: Math.cos(latRad) * Math.sin(lngRad),
+    z: Math.sin(latRad)
+  };
+}
+
 function clearLabels() {
   labelLayer.replaceChildren();
   labelItems = [];
@@ -122,6 +133,8 @@ function rebuildLabels() {
 function updateLabelPositions() {
   const altitude = globe.pointOfView().altitude || 2.5;
   const labelMode = getLabelMode();
+  const pov = globe.pointOfView();
+  const cameraVector = latLngToVector(pov.lat || 0, pov.lng || 0);
 
   if (labelMode !== lastLabelMode) {
     rebuildLabels();
@@ -133,8 +146,26 @@ function updateLabelPositions() {
     item.element.hidden = !show;
     if (!show) continue;
 
+    const pointVector = latLngToVector(item.lat, item.lng);
+    const visibilityDot =
+      pointVector.x * cameraVector.x + pointVector.y * cameraVector.y + pointVector.z * cameraVector.z;
+    if (visibilityDot <= 0.18) {
+      item.element.hidden = true;
+      continue;
+    }
+
     const coords = globe.getScreenCoords(item.lat, item.lng, 0.03);
     if (!coords || !Number.isFinite(coords.x) || !Number.isFinite(coords.y)) {
+      item.element.hidden = true;
+      continue;
+    }
+
+    if (
+      coords.x < -40 ||
+      coords.x > window.innerWidth + 40 ||
+      coords.y < -24 ||
+      coords.y > window.innerHeight + 24
+    ) {
       item.element.hidden = true;
       continue;
     }
