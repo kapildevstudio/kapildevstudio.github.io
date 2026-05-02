@@ -1,131 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="email-protection" content="off"/>
 <meta charset="UTF-8"/>
-<meta name="cf-2fa-verify" content="no-email-obfuscation"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kapil Dev Studio</title>
+<meta name="description" content="Kapil Dev Studio builds mobile games, developer projects, and practical digital experiences with a code-first mindset."/>
+<meta name="theme-color" content="#08080d"/>
+<meta property="og:title" content="Kapil Dev Studio"/>
+<meta property="og:description" content="Code. Build. Ship. Kapil Dev Studio builds mobile games, developer projects, and practical digital experiences."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://kapildevstudio.github.io/"/>
+<meta property="og:image" content="https://kapildevstudio.github.io/devkapilstudio_banner.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://kapildevstudio.github.io/"/>
+<link rel="icon" type="image/png" href="devkapilstudio_watermark.png"/>
+<title>Kapil Dev Studio | Code. Build. Ship.</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #08080d;
+    --panel: rgba(14, 16, 26, 0.82);
+    --panel-solid: #10131d;
+    --text: #f2f0fa;
+    --muted: #a8a4bd;
+    --line: rgba(138, 129, 255, 0.14);
+    --purple: #857bff;
+    --purple-soft: rgba(133, 123, 255, 0.14);
+    --teal: #12c79a;
+    --teal-soft: rgba(18, 199, 154, 0.14);
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: Arial, sans-serif;
-    background: #0a0f0a;
-    color: #e0e0e0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(133, 123, 255, 0.16), transparent 28%),
+      radial-gradient(circle at 82% 24%, rgba(18, 199, 154, 0.14), transparent 26%),
+      linear-gradient(180deg, #0a0a11 0%, #07080c 100%);
     min-height: 100vh;
   }
-  header {
-    background: #0a3d1f;
-    padding: 40px 24px;
-    text-align: center;
-    border-bottom: 3px solid #00cc55;
-  }
-  header h1 {
-    font-size: 32px;
-    color: #00ff88;
-    text-shadow: 0 0 20px #00ff88;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
-  }
-  header p { font-size: 14px; color: #aed9b0; }
 
-  .container { max-width: 860px; margin: 40px auto; padding: 0 24px; }
-
-  .section-title {
-    font-size: 20px;
-    color: #00ff88;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #1a3a1a;
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 256px 256px;
+    pointer-events: none;
+    opacity: 0.35;
   }
 
-  .app-card {
-    background: #111a11;
-    border: 1px solid #1a3a1a;
-    border-left: 4px solid #00ff88;
-    border-radius: 8px;
-    padding: 24px;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .topbar {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 18px;
+    padding: 26px 0 18px;
   }
-  .app-icon {
-    width: 80px; height: 80px;
-    border-radius: 16px;
-    background: #0a3d1f;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 40px;
-    flex-shrink: 0;
-  }
-  .app-info h2 { font-size: 18px; color: #00ff88; margin-bottom: 6px; }
-  .app-info p { font-size: 13px; color: #888; line-height: 1.6; }
-  .app-links { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .app-links a {
-    font-size: 12px; padding: 5px 12px;
-    border: 1px solid #00ff88; color: #00ff88;
-    border-radius: 4px; text-decoration: none;
-    transition: all 0.2s;
-  }
-  .app-links a:hover { background: #00ff8822; }
-  .app-links a.play { background: #00cc55; color: #000; border-color: #00cc55; font-weight: bold; }
-  .app-links a.play:hover { background: #00ff66; }
 
-  .legal-section { margin-top: 40px; }
-  .legal-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
-  .legal-links a {
-    font-size: 13px; color: #00cc55;
-    text-decoration: none; padding: 6px 0;
-    border-bottom: 1px solid #1a3a1a;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
-  .legal-links a:hover { color: #00ff88; }
+
+  .brand img {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(133, 123, 255, 0.35);
+    box-shadow: 0 0 0 4px rgba(18, 199, 154, 0.07);
+  }
+
+  .brand-copy small {
+    display: block;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+  }
+
+  .brand-copy strong {
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .nav a {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .nav a:hover {
+    color: var(--text);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 34px;
+    align-items: center;
+    padding: 32px 0 46px;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .section-card,
+  .feature-card,
+  .support-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero-copy {
+    border-radius: 30px;
+    padding: 38px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--teal);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--teal));
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    line-height: 0.92;
+    margin-bottom: 18px;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-copy p {
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .accent {
+    color: var(--teal);
+  }
+
+  .sub-accent {
+    color: var(--purple);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .button,
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .button {
+    background: linear-gradient(135deg, var(--teal), #34e6b7);
+    color: #06110d;
+    box-shadow: 0 16px 32px rgba(18, 199, 154, 0.28);
+  }
+
+  .button-secondary {
+    background: rgba(133, 123, 255, 0.08);
+    border: 1px solid rgba(133, 123, 255, 0.32);
+    color: var(--text);
+  }
+
+  .button:hover,
+  .button-secondary:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .hero-points span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .hero-card {
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .hero-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 540px;
+  }
+
+  .section {
+    padding: 18px 0 12px;
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    line-height: 1.04;
+  }
+
+  .section-heading p {
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.7;
+  }
+
+  .grid-3,
+  .grid-2 {
+    display: grid;
+    gap: 20px;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-card,
+  .feature-card,
+  .support-card {
+    border-radius: 24px;
+    padding: 28px;
+  }
+
+  .section-card strong,
+  .feature-card strong,
+  .support-card strong {
+    display: block;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .section-card p,
+  .feature-card p,
+  .support-card p,
+  .support-card li {
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .section-card .label,
+  .feature-card .label {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .section-card .label {
+    background: var(--purple-soft);
+    color: var(--purple);
+  }
+
+  .feature-card .label {
+    background: var(--teal-soft);
+    color: var(--teal);
+  }
+
+  .feature-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -60px -90px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(18, 199, 154, 0.16), transparent 68%);
+    pointer-events: none;
+  }
+
+  .feature-card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0 20px;
+  }
+
+  .feature-card .meta span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .feature-actions,
+  .support-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .support-card ul {
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  .support-card li + li {
+    margin-top: 8px;
+  }
+
+  .quote {
+    margin: 32px 0 8px;
+    padding: 28px 30px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(133, 123, 255, 0.11), rgba(18, 199, 154, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .quote p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #e4e0f5;
+  }
+
+  .quote small {
+    display: block;
+    margin-top: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
   footer {
-    text-align: center;
-    padding: 32px 24px;
-    margin-top: 60px;
-    border-top: 1px solid #1a3a1a;
-    font-size: 12px;
-    color: #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 34px 0 46px;
+    color: var(--muted);
+    font-size: 0.95rem;
   }
-  footer a { color: #00cc55; text-decoration: none; }
+
+  footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .grid-3,
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .section-heading,
+    footer,
+    .topbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .hero-card img {
+      min-height: 360px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page {
+      width: min(100% - 24px, 1180px);
+    }
+
+    .hero-copy,
+    .section-card,
+    .feature-card,
+    .support-card {
+      padding: 22px;
+      border-radius: 22px;
+    }
+
+    h1 {
+      letter-spacing: -0.04em;
+    }
+
+    .hero-points span,
+    .nav a {
+      font-size: 0.9rem;
+    }
+  }
 </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <img src="devkapilstudio_watermark.png" alt="Kapil Dev Studio logo"/>
+        <div class="brand-copy">
+          <small>DEV.</small>
+          <strong>Kapil Dev Studio</strong>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">What We Build</a>
+        <a href="#featured">Featured App</a>
+        <a href="#support">Support</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-<header>
-  <h1>🎮 Kapil Dev Studio</h1>
-  <p>Independent game developer — building fun mobile games</p>
-</header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Code. Build. Ship.</div>
+          <h1>Kapil Dev Studio is where <span class="accent">developer energy</span> meets <span class="sub-accent">real products</span>.</h1>
+          <p>
+            We build practical digital experiences with a maker mindset: mobile games, polished app experiences,
+            and developer-led projects that are designed to be useful, lightweight, and enjoyable to use.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#about">Explore the Studio</a>
+            <a class="button-secondary" href="https://play.google.com/store/apps/details?id=com.kapil.snakeegg" target="_blank" rel="noopener noreferrer">View on Google Play</a>
+          </div>
+          <div class="hero-points">
+            <span>Mobile-first builds</span>
+            <span>Indie product mindset</span>
+            <span>Tutorials and experiments</span>
+            <span>Real-world shipping focus</span>
+          </div>
+        </div>
 
-<div class="container">
+        <div class="hero-card">
+          <img src="devkapilstudio_banner.png" alt="Kapil Dev Studio developer-themed banner"/>
+        </div>
+      </section>
 
-  <h2 class="section-title" style="margin-top:0;">Our Games</h2>
+      <section class="section" id="about">
+        <div class="section-heading">
+          <h2>Built around curiosity, execution, and consistent shipping.</h2>
+          <p>
+            Kapil Dev Studio is an independent studio brand focused on creating digital products with a hands-on,
+            code-first approach. The goal is simple: make things that feel clean, useful, and worth coming back to.
+          </p>
+        </div>
 
-  <div class="app-card">
-    <div class="app-icon">🐍</div>
-    <div class="app-info">
-      <h2>SNAKE — Egg Hunter</h2>
-      <p>Classic snake game with a modern twist. Guide your snake, eat golden eggs, grow longer and beat your high score! Features neon retro graphics, smooth controls, Google Sign-In and more.</p>
-      <div class="app-links">
-        <a href="https://play.google.com/store/apps/details?id=com.kapil.snakeegg" class="play">▶ Google Play</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="delete-account.html">Delete Account</a>
-      </div>
-    </div>
+        <div class="grid-3">
+          <article class="section-card">
+            <span class="label">Studio Focus</span>
+            <strong>Independent by design</strong>
+            <p>
+              The studio moves fast, learns by building, and keeps the process close to the product. That means fewer layers,
+              clearer decisions, and more attention on the actual user experience.
+            </p>
+          </article>
+
+          <article class="section-card">
+            <span class="label">Approach</span>
+            <strong>Code-first product thinking</strong>
+            <p>
+              Every release starts with a practical idea, then gets shaped through iteration, testing, and shipping. The emphasis
+              is on real outcomes instead of overcomplication.
+            </p>
+          </article>
+
+          <article class="section-card">
+            <span class="label">Direction</span>
+            <strong>Games, tools, and real projects</strong>
+            <p>
+              The brand currently includes mobile game development and can naturally expand into tutorials, dev tools,
+              experiments, and other creator-led technical work.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="section-heading">
+          <h2>What Kapil Dev Studio stands for.</h2>
+          <p>
+            This is more than a single app page. The studio identity should reflect the kind of work being built and the mindset behind it.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="feature-card">
+            <span class="label">Build Philosophy</span>
+            <strong>Products that feel approachable and well made</strong>
+            <p>
+              Whether the project is a game, a utility, or a learning-driven experiment, the priority is to keep it intuitive,
+              responsive, and thoughtfully designed from the first interaction onward.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="label">Brand Energy</span>
+            <strong>Developer culture with a creator mindset</strong>
+            <p>
+              The visual identity points toward a broader studio voice: shipping, experimenting, teaching, and building things
+              that connect coding with real user value.
+            </p>
+          </article>
+        </div>
+
+        <div class="quote">
+          <p>
+            "Kapil Dev Studio is a home for digital work that blends product thinking, practical development, and the discipline to keep shipping."
+          </p>
+          <small>Studio Positioning</small>
+        </div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-heading">
+          <h2>Featured release</h2>
+          <p>
+            The current public app under the studio banner is <strong>SNAKE - Egg Hunter</strong>, a retro-inspired mobile game built for quick sessions and simple fun.
+          </p>
+        </div>
+
+        <article class="feature-card">
+          <span class="label">Google Play</span>
+          <strong>SNAKE - Egg Hunter</strong>
+          <p>
+            A classic snake-style game with a modern presentation. Players guide the snake, collect eggs, grow their score,
+            and enjoy a smooth mobile experience designed to stay lightweight and accessible.
+          </p>
+          <div class="meta">
+            <span>Android release</span>
+            <span>Indie mobile game</span>
+            <span>Google Sign-In and billing support</span>
+          </div>
+          <div class="feature-actions">
+            <a class="button" href="https://play.google.com/store/apps/details?id=com.kapil.snakeegg" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+            <a class="button-secondary" href="privacy-policy.html">Privacy Policy</a>
+            <a class="button-secondary" href="delete-account.html">Delete Account</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="support">
+        <div class="section-heading">
+          <h2>Support and studio contact</h2>
+          <p>
+            The site should help visitors understand both the studio identity and where to go for app-specific support, privacy details, and account requests.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="support-card">
+            <strong>Contact Kapil Dev Studio</strong>
+            <p>
+              For support, feedback, or studio inquiries, reach out directly by email or visit the contact page for the full details.
+            </p>
+            <div class="support-links">
+              <a class="text-link" href="mailto:studio.kapildev@gmail.com">studio.kapildev@gmail.com</a>
+              <a class="text-link" href="contact.html">Open Contact Page</a>
+            </div>
+          </article>
+
+          <article class="support-card">
+            <strong>Quick links</strong>
+            <ul>
+              <li><a class="text-link" href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a class="text-link" href="delete-account.html">Delete Account Information</a></li>
+              <li><a class="text-link" href="https://kapildevstudio.github.io/" target="_blank" rel="noopener noreferrer">Live Website</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>&copy; 2026 Kapil Dev Studio. Independent studio brand for games, products, and developer-led work.</div>
+      <nav aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#featured">Featured App</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="delete-account.html">Deletion</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
   </div>
-
-  <div class="legal-section">
-    <h2 class="section-title">Legal & Support</h2>
-    <div class="legal-links">
-      <a href="privacy-policy.html">🔒 Privacy Policy</a>
-      <a href="delete-account.html">🗑 Delete Account</a>
-      <a href="contact.html">📬 Contact Us</a>
-    </div>
-  </div>
-
-</div>
-
-<footer>
-  © 2026 Kapil Dev Studio · All rights reserved ·
-  <a href="/cdn-cgi/l/email-protection#8de9e8fbfef9f8
+</body>
+</html>

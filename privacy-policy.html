@@ -3,185 +3,285 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Privacy Policy — SNAKE Egg Hunter</title>
+<meta name="description" content="Privacy Policy for SNAKE - Egg Hunter by Kapil Dev Studio."/>
+<meta name="theme-color" content="#08080d"/>
+<meta property="og:title" content="Privacy Policy | Kapil Dev Studio"/>
+<meta property="og:description" content="Privacy Policy for SNAKE - Egg Hunter by Kapil Dev Studio."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://kapildevstudio.github.io/privacy-policy.html"/>
+<meta property="og:image" content="https://kapildevstudio.github.io/devkapilstudio_banner.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://kapildevstudio.github.io/privacy-policy.html"/>
+<link rel="icon" type="image/png" href="devkapilstudio_watermark.png"/>
+<title>Privacy Policy | Kapil Dev Studio</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #08080d;
+    --panel: rgba(14, 16, 26, 0.88);
+    --text: #f2f0fa;
+    --muted: #a8a4bd;
+    --line: rgba(138, 129, 255, 0.14);
+    --purple: #857bff;
+    --teal: #12c79a;
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    color: #222;
-    line-height: 1.8;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(133, 123, 255, 0.16), transparent 28%),
+      radial-gradient(circle at 82% 24%, rgba(18, 199, 154, 0.14), transparent 26%),
+      linear-gradient(180deg, #0a0a11 0%, #07080c 100%);
+    min-height: 100vh;
   }
-  header {
-    background: #0a3d1f;
-    color: #fff;
-    padding: 32px 24px;
-    text-align: center;
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 256px 256px;
+    opacity: 0.35;
+    pointer-events: none;
   }
-  header h1 { font-size: 26px; margin-bottom: 6px; }
-  header p  { font-size: 13px; color: #aed9b0; }
-  .container {
-    max-width: 820px;
-    margin: 32px auto;
-    background: #fff;
-    border-radius: 8px;
-    padding: 40px 48px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+
+  a {
+    color: var(--teal);
+    text-decoration: none;
   }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: min(980px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 28px 0 48px;
+  }
+
+  .topbar,
+  .hero,
+  .policy,
+  .footer {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+  }
+
+  .topbar,
+  .footer {
+    border-radius: 22px;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(133, 123, 255, 0.35);
+  }
+
+  .brand small {
+    display: block;
+    color: var(--teal);
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: var(--muted);
+  }
+
+  .hero,
+  .policy {
+    border-radius: 28px;
+    padding: 32px 30px;
+    margin-top: 18px;
+  }
+
+  .eyebrow {
+    color: var(--teal);
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 0.96;
+    margin-bottom: 12px;
+  }
+
   h2 {
-    font-size: 18px;
-    color: #0a3d1f;
-    margin: 28px 0 10px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid #e0f0e0;
+    font-size: 1.2rem;
+    margin: 28px 0 12px;
   }
-  p, li { font-size: 15px; color: #333; margin-bottom: 10px; }
-  ul { padding-left: 22px; margin-bottom: 10px; }
-  a { color: #0a7c32; }
+
+  p,
+  li {
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
   .updated {
-    font-size: 13px; color: #888;
-    margin-bottom: 24px;
+    display: inline-block;
+    margin-top: 14px;
     padding: 10px 14px;
-    background: #f0f8f0;
-    border-left: 4px solid #0a7c32;
-    border-radius: 2px;
+    border-radius: 999px;
+    color: var(--purple);
+    background: rgba(133, 123, 255, 0.12);
+    font-size: 0.92rem;
+    font-weight: 700;
   }
-  footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 12px;
-    color: #999;
+
+  .footer {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 0.95rem;
   }
 </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <img src="devkapilstudio_watermark.png" alt="Kapil Dev Studio logo"/>
+        <div>
+          <small>DEV.</small>
+          <div>Kapil Dev Studio</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="delete-account.html">Delete Account</a>
+      </nav>
+    </header>
 
-<header>
-  <h1>🐍 SNAKE — Egg Hunter</h1>
-  <p>Privacy Policy</p>
-</header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Privacy Policy</div>
+        <h1>SNAKE - Egg Hunter</h1>
+        <p>
+          This Privacy Policy explains how Kapil Dev Studio collects, uses, and handles information when you use
+          the SNAKE - Egg Hunter mobile application.
+        </p>
+        <div class="updated">Last updated: March 14, 2026</div>
+      </section>
 
-<div class="container">
+      <section class="policy">
+        <p>
+          By using the app, you agree to the practices described on this page. We aim to keep the experience simple
+          and transparent, and we keep personal data collection limited to what is necessary for the app to function.
+        </p>
 
-  <div class="updated">Last updated: March 14, 2026</div>
+        <h2>1. Information we collect</h2>
+        <ul>
+          <li><strong>Google account information:</strong> If you sign in with Google, the app may access your name, email address, and profile image provided by Google Sign-In.</li>
+          <li><strong>Guest name:</strong> If you use guest mode, the name you enter is stored locally on your device only.</li>
+          <li><strong>Purchase information:</strong> If you purchase Remove Ads, payment processing is handled by Google Play Billing. We do not store your payment details.</li>
+          <li><strong>Advertising data:</strong> The app uses Google AdMob, which may collect device identifiers and usage-related information to serve ads.</li>
+        </ul>
 
-  <p>
-    This Privacy Policy describes how <strong>Kapil Dev Studio</strong> ("we", "us", or "our")
-    collects, uses, and shares information when you use the <strong>SNAKE — Egg Hunter</strong>
-    mobile application ("the App"). By using the App, you agree to the practices described in
-    this policy.
-  </p>
+        <h2>2. How information is used</h2>
+        <ul>
+          <li>To show your name or profile inside the app</li>
+          <li>To remember your Remove Ads purchase status</li>
+          <li>To display ads through Google AdMob</li>
+          <li>To improve app performance and user experience</li>
+        </ul>
 
-  <h2>1. Information We Collect</h2>
-  <p>We collect the following types of information:</p>
-  <ul>
-    <li>
-      <strong>Google Account Information (if you sign in with Google):</strong>
-      Your name, email address, and profile picture, provided by Google Sign-In.
-      This is used only to personalise your in-app experience (e.g. displaying your name).
-    </li>
-    <li>
-      <strong>Guest Name:</strong> If you play as a guest, the name you enter is stored
-      locally on your device only and is never transmitted to any server.
-    </li>
-    <li>
-      <strong>Purchase Information:</strong> If you purchase "Remove Ads" (₹99), the
-      transaction is processed entirely by Google Play Billing. We do not collect or store
-      your payment details.
-    </li>
-    <li>
-      <strong>Advertising Data:</strong> Our app uses Google AdMob to display advertisements.
-      AdMob may collect device identifiers and usage data to serve personalised ads.
-      Please refer to Google's Privacy Policy for details.
-    </li>
-  </ul>
+        <h2>3. Data storage</h2>
+        <p>
+          User preferences, guest name, and purchase status are stored locally on your device. Kapil Dev Studio does not
+          operate a backend server for this app and does not store personal app data on its own servers.
+        </p>
 
-  <h2>2. How We Use Your Information</h2>
-  <ul>
-    <li>To display your name and profile within the App</li>
-    <li>To remember your "Remove Ads" purchase status linked to your Google account</li>
-    <li>To serve advertisements via Google AdMob</li>
-    <li>To improve the App's performance and user experience</li>
-  </ul>
+        <h2>4. Third-party services</h2>
+        <p>The app uses third-party services that have their own privacy terms and policies.</p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> for Google AdMob and Google Sign-In</li>
+          <li><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener noreferrer">Google Play Terms</a> for billing and purchase handling</li>
+        </ul>
 
-  <h2>3. Data Storage</h2>
-  <p>
-    User preferences, name, and purchase status are stored locally on your device using
-    browser localStorage within the App's WebView. No personal data is transmitted to
-    or stored on our servers. We do not operate any backend servers.
-  </p>
+        <h2>5. Advertising and opt-out</h2>
+        <p>
+          Google AdMob may use the advertising ID on your device to serve personalized ads. You can control ad personalization
+          through your device settings. Users can also remove ads in the app by purchasing the Remove Ads option when available.
+        </p>
 
-  <h2>4. Third-Party Services</h2>
-  <p>The App uses the following third-party services which have their own privacy policies:</p>
-  <ul>
-    <li>
-      <strong>Google AdMob</strong> — for displaying advertisements.<br/>
-      <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
-    </li>
-    <li>
-      <strong>Google Sign-In</strong> — for authentication.<br/>
-      <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
-    </li>
-    <li>
-      <strong>Google Play Billing</strong> — for in-app purchases.<br/>
-      <a href="https://play.google.com/about/play-terms/" target="_blank">Google Play Terms</a>
-    </li>
-  </ul>
+        <h2>6. Children's privacy</h2>
+        <p>
+          SNAKE - Egg Hunter is designed to be broadly accessible. We do not knowingly collect personal information from children
+          under 13 beyond what may be provided through third-party services used in the app.
+        </p>
 
-  <h2>5. Advertising and Opt-Out</h2>
-  <p>
-    We use Google AdMob to show banner and interstitial advertisements. AdMob may use your
-    device's advertising ID to serve personalised ads. You can opt out of personalised
-    advertising at any time by:
-  </p>
-  <ul>
-    <li>Going to your device <strong>Settings → Google → Ads → Opt out of Ads Personalisation</strong></li>
-    <li>Or by purchasing <strong>Remove Ads (₹99)</strong> within the App to remove all advertisements entirely</li>
-  </ul>
+        <h2>7. Data sharing</h2>
+        <p>
+          Kapil Dev Studio does not sell, rent, or trade personal information. Information may be handled by the third-party
+          services listed above only for the functions they provide.
+        </p>
 
-  <h2>6. Children's Privacy</h2>
-  <p>
-    SNAKE — Egg Hunter is rated <strong>Everyone (E)</strong> and is suitable for all ages.
-    We do not knowingly collect personal information from children under 13. The App does not
-    require account creation to play — the Guest mode allows anyone to play without providing
-    any personal information.
-  </p>
+        <h2>8. Data retention</h2>
+        <p>
+          Data stored locally on your device can be removed by clearing app data or uninstalling the app. Because we do not keep
+          this data on our own servers, there is no separate remote data store maintained by Kapil Dev Studio for the app.
+        </p>
 
-  <h2>7. Data Sharing</h2>
-  <p>
-    We do not sell, trade, or rent your personal information to any third parties.
-    Information may be shared only with third-party services listed in Section 4 above,
-    strictly for the purposes described.
-  </p>
+        <h2>9. Security</h2>
+        <p>
+          We take reasonable care to keep the app experience secure. Third-party service providers such as Google are responsible
+          for securing the data they process through their own systems and infrastructure.
+        </p>
 
-  <h2>8. Data Retention</h2>
-  <p>
-    All data stored locally on your device (name, preferences, purchase status) can be
-    cleared at any time by uninstalling the App. Since we do not store data on external
-    servers, there is no additional data to delete.
-  </p>
+        <h2>10. Policy changes</h2>
+        <p>
+          This page may be updated from time to time. When changes are made, the Last updated date at the top of the page will be revised.
+        </p>
 
-  <h2>9. Security</h2>
-  <p>
-    We take reasonable precautions to protect your information. Since no personal data
-    is transmitted to external servers, the primary security responsibility lies with
-    Google's own services (AdMob, Sign-In, Play Billing), all of which use
-    industry-standard encryption.
-  </p>
+        <h2>11. Contact</h2>
+        <p>
+          If you have questions about this policy, contact Kapil Dev Studio at
+          <a href="mailto:studio.kapildev@gmail.com">studio.kapildev@gmail.com</a>.
+        </p>
+      </section>
+    </main>
 
-  <h2>10. Changes to This Policy</h2>
-  <p>
-    We may update this Privacy Policy from time to time. Any changes will be posted on
-    this page with an updated "Last updated" date. We encourage you to review this policy
-    periodically.
-  </p>
-
-  <h2>11. Contact Us</h2>
-  <p>
-    If you have any questions or concerns about this Privacy Policy, please contact us at:
-  </p>
-  <ul>
-    <li><strong>Developer:</strong> Kapil Dev Studio</li>
-    <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="88e9e1fae5e9e1e4bae3e9f8e1e4c8efe5e9e1e4a6ebe7e5">[email&#160;protected]</a></li>
-    <li><strong>App:</strong> SNAKE — Egg Hunter</li>
- 
+    <footer class="footer">
+      <div>&copy; 2026 Kapil Dev Studio</div>
+      <div>Privacy information for SNAKE - Egg Hunter</div>
+    </footer>
+  </div>
+</body>
+</html>
