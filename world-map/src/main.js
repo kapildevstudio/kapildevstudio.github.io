@@ -12,6 +12,7 @@ let countries = [];
 let stateRecords = [];
 let selected = null;
 let labelItems = [];
+let lastLabelMode = '';
 const COUNTRY_LABEL_ALTITUDE = 1.9;
 const STATE_LABEL_ALTITUDE = 2.65;
 
@@ -90,9 +91,17 @@ function addLabel(record, kind) {
   labelItems.push({ element, lat: record.lat, lng: record.lng, kind });
 }
 
+function getLabelMode() {
+  const altitude = globe.pointOfView().altitude || 2.5;
+  const countryMode = selected ? `selected:${selected.name}` : altitude <= COUNTRY_LABEL_ALTITUDE ? 'global' : 'none';
+  const stateMode = selected && altitude < STATE_LABEL_ALTITUDE ? 'states' : 'country-only';
+  return `${countryMode}|${stateMode}`;
+}
+
 function rebuildLabels() {
   clearLabels();
   const altitude = globe.pointOfView().altitude || 2.5;
+  lastLabelMode = getLabelMode();
 
   if (selected) {
     addLabel({ text: selected.name, lat: selected.lat, lng: selected.lng }, 'country');
@@ -112,6 +121,12 @@ function rebuildLabels() {
 
 function updateLabelPositions() {
   const altitude = globe.pointOfView().altitude || 2.5;
+  const labelMode = getLabelMode();
+
+  if (labelMode !== lastLabelMode) {
+    rebuildLabels();
+    return;
+  }
 
   for (const item of labelItems) {
     const show = item.kind === 'country' ? altitude <= COUNTRY_LABEL_ALTITUDE : altitude < STATE_LABEL_ALTITUDE;
@@ -166,7 +181,6 @@ resetView.addEventListener('click', reset);
 zoomIn.addEventListener('click', () => zoom(-0.42));
 zoomOut.addEventListener('click', () => zoom(0.42));
 globe.controls().addEventListener('change', updateLabelPositions);
-globe.controls().addEventListener('end', rebuildLabels);
 
 Promise.all([
   fetch('./data/countries.geo.json').then((response) => response.json()),
