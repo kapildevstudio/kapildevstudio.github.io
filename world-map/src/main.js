@@ -12,6 +12,8 @@ let countries = [];
 let stateRecords = [];
 let selected = null;
 let labelItems = [];
+const COUNTRY_LABEL_ALTITUDE = 1.9;
+const STATE_LABEL_ALTITUDE = 2.65;
 
 const globe = Globe()(document.querySelector('#globe'))
   .backgroundColor('rgba(0,0,0,0)')
@@ -90,12 +92,15 @@ function addLabel(record, kind) {
 
 function rebuildLabels() {
   clearLabels();
-  if (!selected) return;
-
-  addLabel({ text: selected.name, lat: selected.lat, lng: selected.lng }, 'country');
-
   const altitude = globe.pointOfView().altitude || 2.5;
-  if (altitude < 2.65) {
+
+  if (selected) {
+    addLabel({ text: selected.name, lat: selected.lat, lng: selected.lng }, 'country');
+  } else if (altitude <= COUNTRY_LABEL_ALTITUDE) {
+    countries.forEach((country) => addLabel(country, 'country'));
+  }
+
+  if (selected && altitude < STATE_LABEL_ALTITUDE) {
     stateRecords
       .filter((state) => state.admin === selected.name)
       .slice(0, 90)
@@ -109,7 +114,7 @@ function updateLabelPositions() {
   const altitude = globe.pointOfView().altitude || 2.5;
 
   for (const item of labelItems) {
-    const show = item.kind === 'country' || altitude < 2.65;
+    const show = item.kind === 'country' ? altitude <= COUNTRY_LABEL_ALTITUDE : altitude < STATE_LABEL_ALTITUDE;
     item.element.hidden = !show;
     if (!show) continue;
 
@@ -161,6 +166,7 @@ resetView.addEventListener('click', reset);
 zoomIn.addEventListener('click', () => zoom(-0.42));
 zoomOut.addEventListener('click', () => zoom(0.42));
 globe.controls().addEventListener('change', updateLabelPositions);
+globe.controls().addEventListener('end', rebuildLabels);
 
 Promise.all([
   fetch('./data/countries.geo.json').then((response) => response.json()),
@@ -185,6 +191,7 @@ Promise.all([
 
     globe.polygonsData(countries.map((country) => country.feature));
     setStatus(`${countries.length} countries, ${stateRecords.length} states/provinces ready`);
+    rebuildLabels();
   })
   .catch((error) => {
     console.warn(error);
